@@ -52,6 +52,7 @@ description: Traction Dashboard 스타일의 HTML 발표 슬라이드 덱을 만
 ## 엔지니어링 규칙
 
 - **페이지 번호 하드코딩 금지** — template의 JS가 `.pg`와 footer를 자동 채움. 슬라이드 추가/삭제/이동 자유.
+- **프레젠테이션 모드 내장** — template의 내비게이션 JS: →/←, PgDn/PgUp, Space, Home/End로 슬라이드 단위 이동(스크롤 스냅). 사용자에게 "F11 전체화면 + 방향키"로 발표하라고 안내할 것.
 - 16:9 고정, 슬라이드 내부는 `font-size: clamp()` 기반 em 스케일.
 - 폰트/KaTeX는 CDN — 오프라인 발표 가능성 있으면 사용자에게 알릴 것.
 
