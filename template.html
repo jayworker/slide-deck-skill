@@ -30,7 +30,7 @@
   body{background:#EDF0F3;font-family:var(--font-head);color:var(--colors-body);padding:40px 0}
   .deck{display:flex;flex-direction:column;align-items:center;gap:32px}
   .slide{
-    width:min(1200px,94vw,163vh);aspect-ratio:16/9;background:var(--colors-bg);
+    width:min(94vw,160vh);aspect-ratio:16/9;background:var(--colors-bg);
     border:1px solid var(--colors-border);position:relative;overflow:hidden;
     font-size:clamp(9px,1.45vw,17.5px);
     scroll-snap-align:center;
@@ -209,6 +209,11 @@ addEventListener('DOMContentLoaded', () => {
     const f = s.querySelector('.footer span:last-child');
     if (f) f.textContent = p;
   });
+
+  /* ── 반응형 스케일: 슬라이드 실제 폭에 비례해 폰트 재계산 — 모바일·전체화면에서 통째로 축소/확대 ── */
+  const fit = () => slides.forEach(s => { s.style.fontSize = (s.clientWidth * 0.01458) + 'px'; });
+  fit();
+  addEventListener('resize', fit);
 
   /* ── 프레젠테이션 내비게이션: →/← · PgDn/PgUp · Space · Home/End (전체화면은 F11) ── */
   let cur = 0;
