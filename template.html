@@ -32,7 +32,7 @@
   .slide{
     width:min(94vw,160vh);aspect-ratio:16/9;background:var(--colors-bg);
     border:1px solid var(--colors-border);position:relative;overflow:hidden;
-    font-size:clamp(9px,1.45vw,17.5px);
+    font-size:clamp(10px,1.63vw,19.5px);
     scroll-snap-align:center;
   }
   .inner{position:absolute;inset:0;padding:4.2% 4.5% 8.5% 4.5%;display:flex;flex-direction:column}
@@ -42,6 +42,8 @@
   .green{color:var(--colors-primary)}
   .red{color:#D64545}   /* 금지/불가 전용 */
   .mono{font-family:var(--font-mono)}
+  /* Lucide 아이콘 (icons/*.svg 인라인 삽입용) — currentColor라 .green/.red 그대로 적용 */
+  .ico{width:1.15em;height:1.15em;vertical-align:-.18em}
   .top{display:flex;align-items:center;gap:1em;margin-bottom:.8em}
   .top h2{font-size:1.5em;font-weight:700;letter-spacing:-.015em;color:var(--colors-ink);line-height:1.25}
   .top .pg{margin-left:auto;font-family:var(--font-mono);font-size:.66em;color:var(--colors-label)}
@@ -211,9 +213,17 @@ addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── 반응형 스케일: 슬라이드 실제 폭에 비례해 폰트 재계산 — 모바일·전체화면에서 통째로 축소/확대 ── */
-  const fit = () => slides.forEach(s => { s.style.fontSize = (s.clientWidth * 0.01458) + 'px'; });
+  const fit = () => slides.forEach(s => { s.style.fontSize = (s.clientWidth * 0.0163) + 'px'; });
   fit();
   addEventListener('resize', fit);
+
+  /* ── 스크린샷 헬퍼: ?only=N 이면 N번째 슬라이드만 남긴다 (headless 캡처용) ── */
+  const only = parseInt(new URLSearchParams(location.search).get('only'), 10);
+  if (only >= 1 && only <= slides.length) {
+    slides.forEach((s, i) => { if (i !== only - 1) s.remove(); });
+    document.body.style.padding = '0';
+    fit();
+  }
 
   /* ── 프레젠테이션 내비게이션: →/← · PgDn/PgUp · Space · Home/End (전체화면은 F11) ── */
   let cur = 0;

@@ -38,34 +38,40 @@ Claude Code에서:
 
 작업 폴더에 [DESIGN.md 스펙](https://github.com/google-labs-code/design.md) 형식의 `design.md`가 있으면 그 토큰을 우선 사용하고, 없으면 내장 Traction 토큰을 쓴다.
 
-## 아이콘 — Lucide
+## 미리보기
 
-덱에서 아이콘이 필요하면 **[Lucide](https://lucide.dev)** (ISC 라이선스)만 쓴다.
-`unpkg.com/lucide-static/icons/<이름>.svg`를 가져와 **인라인 SVG**로 삽입 —
-산출물은 단일 HTML 파일로 유지되고, stroke `1.75` · `currentColor`라 텍스트 색
-규칙(강조색/레드)을 그대로 따른다. PPT에 직접 쓸 때도 lucide.dev에서 SVG를 받아
-PowerPoint에 삽입하면 색 편집이 된다.
-
-## 제공 디자인 — NEWL (네이비 + 골드)
-
-`designs/newl/design.md` — NEWL 연구실 디자인 시스템 토큰. "NEWL 디자인으로
-만들어줘"라고 하거나 이 파일을 작업 폴더에 `design.md`로 복사하면 적용된다.
-Pretendard, 18px 기본의 확대 타입 스케일, Lucide 아이콘 규칙 포함.
-
-디자인 예시 (`designs/newl/examples/` — 브라우저에서 바로 열림):
+[`examples/sample-deck.html`](examples/sample-deck.html)을 브라우저로 열면 그대로 볼 수 있다.
 
 | | |
 |---|---|
-| ![Home](designs/newl/screenshots/01-home.png) | ![Research](designs/newl/screenshots/02-research.png) |
-| ![Publications](designs/newl/screenshots/03-publications.png) | ![Styleguide](designs/newl/screenshots/04-styleguide.png) |
+| ![표지](docs/screenshots/slide-1.png) | ![3층 구조](docs/screenshots/slide-2.png) |
+| ![아이콘 규칙](docs/screenshots/slide-3.png) | ![데이터 슬라이드](docs/screenshots/slide-4.png) |
+
+스크린샷은 `?only=N` 헬퍼(N번째 슬라이드만 렌더)로 headless Chrome에서 캡처:
+
+```powershell
+& "$env:LOCALAPPDATA\Google\Chrome\Application\chrome.exe" --headless=new --hide-scrollbars `
+  --window-size=1600,940 --virtual-time-budget=15000 `
+  --screenshot="docs\screenshots\slide-1.png" "file:///...\examples\sample-deck.html?only=1"
+```
+
+## 아이콘 — Lucide
+
+덱에서 아이콘이 필요하면 **[Lucide](https://lucide.dev)** (ISC 라이선스)만 쓴다.
+자주 쓰는 16종은 [`icons/`](icons/)에 동봉 (stroke 1.75로 조정본), 없는 건
+`unpkg.com/lucide-static/icons/<이름>.svg`에서 가져와 **인라인 SVG**로 삽입한다 —
+산출물은 단일 HTML로 유지되고, `currentColor`라 그린/레드 강조 규칙을 그대로 따른다.
+PPT에 직접 쓸 때도 lucide.dev에서 SVG를 받아 PowerPoint에 삽입하면 색 편집이 된다.
 
 ## 구성
 
 | 파일 | 역할 |
 |------|------|
 | `SKILL.md` | 스킬 정의 — 워크플로, 슬라이드 패턴, 글쓰기/강조/비주얼 규칙 |
-| `template.html` | 보일러플레이트 — 디자인 토큰 CSS, 슬라이드 유형별 견본 4장, 자동 번호 스크립트 |
-| `designs/newl/` | NEWL 디자인 토큰(`design.md`) + 예시 페이지 4장 + 스크린샷 |
+| `template.html` | 보일러플레이트 — 디자인 토큰 CSS, 슬라이드 유형별 견본 4장, 자동 번호·`?only=N` 스크립트 |
+| `icons/` | 자주 쓰는 Lucide 아이콘 SVG 16종 (stroke 1.75) |
+| `examples/sample-deck.html` | 샘플 덱 5장 — 구조·아이콘·데이터 슬라이드 데모 |
+| `docs/screenshots/` | 샘플 덱 슬라이드별 PNG (README 미리보기) |
 
 ## 크레딧
 

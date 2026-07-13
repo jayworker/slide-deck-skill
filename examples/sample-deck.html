@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>slide-deck 스킬 — 샘플 덱</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  /* ═══ TOKENS — Traction Dashboard (design.md) ═══ */
+  :root{
+    --colors-primary:#0E9F6E; --colors-primary-soft:#5BD0A4;
+    --colors-bg:#FAFBFC; --colors-card:#FFFFFF; --colors-border:#E4E8EC;
+    --colors-ink:#111827; --colors-body:#3F4754; --colors-label:#8A93A2;
+    --colors-neutral-line:#C7CDD6; --badge-bg:#E7F6F0;
+    --font-head:"Archivo","Pretendard Variable",Pretendard,"Malgun Gothic",sans-serif;
+    --font-mono:"JetBrains Mono","Consolas",monospace;
+    --rounded-sm:6px; --rounded-md:10px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-snap-type:y proximity}
+  body{background:#EDF0F3;font-family:var(--font-head);color:var(--colors-body);padding:40px 0}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px}
+  .slide{
+    width:min(94vw,160vh);aspect-ratio:16/9;background:var(--colors-bg);
+    border:1px solid var(--colors-border);position:relative;overflow:hidden;
+    font-size:clamp(10px,1.63vw,19.5px);
+    scroll-snap-align:center;
+  }
+  .inner{position:absolute;inset:0;padding:4.2% 4.5% 8.5% 4.5%;display:flex;flex-direction:column}
+  .label{font-family:var(--font-mono);font-size:.62em;font-weight:500;letter-spacing:.12em;color:var(--colors-label);text-transform:uppercase}
+  .badge{display:inline-block;font-family:var(--font-mono);font-size:.6em;font-weight:600;letter-spacing:.1em;color:var(--colors-primary);background:var(--badge-bg);border-radius:var(--rounded-sm);padding:.35em .8em;text-transform:uppercase}
+  .card{background:var(--colors-card);border:1px solid var(--colors-border);border-radius:var(--rounded-md)}
+  .green{color:var(--colors-primary)}
+  .red{color:#D64545}
+  .mono{font-family:var(--font-mono)}
+  .ico{width:1.15em;height:1.15em;vertical-align:-.18em}
+  .top{display:flex;align-items:center;gap:1em;margin-bottom:.8em}
+  .top h2{font-size:1.5em;font-weight:700;letter-spacing:-.015em;color:var(--colors-ink);line-height:1.25}
+  .top .pg{margin-left:auto;font-family:var(--font-mono);font-size:.66em;color:var(--colors-label)}
+  .footer{position:absolute;left:4.5%;right:4.5%;bottom:3.4%;display:flex;justify-content:space-between;border-top:1px solid var(--colors-border);padding-top:.6em;font-family:var(--font-mono);font-size:.58em;color:var(--colors-label);letter-spacing:.08em}
+  .stmt{font-size:1.6em;font-weight:800;letter-spacing:-.015em;color:var(--colors-ink);line-height:1.3;margin:.2em 0 .6em}
+  .chips{display:flex;gap:.8em;margin-top:auto}
+  .chip{flex:1;background:var(--colors-card);border:1px solid var(--colors-border);border-radius:var(--rounded-md);padding:.8em 1em;text-align:center}
+  .chip .k{font-size:.95em;font-weight:700;color:var(--colors-ink)}
+  .chip .k.green{color:var(--colors-primary)}
+  .chip .c{font-size:.62em;color:var(--colors-label);margin-top:.25em}
+  .chip.hl{border-top:2px solid var(--colors-primary)}
+  .cover h1{font-size:2.7em;font-weight:800;letter-spacing:-.02em;color:var(--colors-ink);line-height:1.18;margin-top:.7em}
+  .cover .sub{margin-top:.8em;font-size:.9em;color:var(--colors-label)}
+  .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.7em;align-items:stretch;margin-top:auto;margin-bottom:1.4em}
+  .flow .st{padding:1.1em 1.2em}
+  .flow .st .n{font-family:var(--font-mono);font-size:1.6em;font-weight:600;color:var(--colors-primary)}
+  .flow .st h3{font-size:1em;font-weight:700;color:var(--colors-ink);margin:.35em 0 .25em;line-height:1.35}
+  .flow .st p{font-size:.68em;color:var(--colors-label)}
+  .flow .ar{align-self:center;font-family:var(--font-mono);font-size:1.3em;color:var(--colors-neutral-line)}
+  .hero{flex:1;display:flex;flex-direction:column;min-height:0;padding:1em 1.4em}
+  .hero svg.fig{width:100%;flex:1;min-height:0}
+  /* 아이콘 쇼케이스 (예시 3번 슬라이드 전용) */
+  .icogrid{flex:1;display:grid;grid-template-columns:repeat(8,1fr);gap:.7em;align-content:center}
+  .icogrid .cell{display:flex;flex-direction:column;align-items:center;gap:.5em;padding:.9em .3em;background:var(--colors-card);border:1px solid var(--colors-border);border-radius:var(--rounded-md)}
+  .icogrid .cell svg{width:1.9em;height:1.9em;color:var(--colors-ink)}
+  .icogrid .cell.g svg{color:var(--colors-primary)}
+  .icogrid .cell span{font-family:var(--font-mono);font-size:.55em;color:var(--colors-label)}
+  .ex{flex:1;display:grid;grid-template-columns:.9fr 1.5fr;gap:.9em;min-height:0}
+  .ex .vars{padding:1em 1.2em;display:flex;flex-direction:column;justify-content:space-between;gap:.5em}
+  .ex .vg .label{display:block;margin-bottom:.25em}
+  .ex .vg p{font-size:.74em;line-height:1.55;color:var(--colors-ink);font-weight:600}
+  .ex .vg p .u{color:var(--colors-label);font-weight:400}
+  .ex .data{padding:1em 1.2em;display:flex;flex-direction:column}
+  .ex table{width:100%;border-collapse:collapse;font-size:.66em}
+  .ex th{font-family:var(--font-mono);font-weight:500;color:var(--colors-label);text-align:center;padding:.55em .4em;border-bottom:1px solid var(--colors-neutral-line)}
+  .ex td{font-family:var(--font-mono);text-align:center;padding:.55em .4em;border-bottom:1px solid var(--colors-border)}
+  .ex td:first-child{color:var(--colors-ink);font-weight:500}
+  .ex .note{margin-top:auto;padding-top:.6em;font-size:.72em;font-weight:600;color:var(--colors-ink);border-top:1px solid var(--colors-border)}
+  .acts{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:.9em;min-height:0}
+  .acts .a{padding:1.3em;display:flex;flex-direction:column}
+  .acts .a .n{font-family:var(--font-mono);font-size:2.2em;font-weight:600;color:var(--colors-primary)}
+  .acts .a h3{font-size:1.15em;font-weight:800;color:var(--colors-ink);margin:.45em 0 .4em;line-height:1.35}
+  .acts .a p{font-size:.74em;line-height:1.6}
+  .acts .a .who{margin-top:auto;font-family:var(--font-mono);font-size:.62em;color:var(--colors-label);border-top:1px solid var(--colors-border);padding-top:.7em;letter-spacing:.08em}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ════ 1 · COVER ════ -->
+<section class="slide cover">
+  <div class="inner">
+    <span class="badge">slide-deck skill · sample</span>
+    <h1>발표덱을 <span class="green">단일 HTML</span>로 —<br>slide-deck 스킬</h1>
+    <p class="sub">키워드 중심 · 슬라이드당 메시지 1개 · 인라인 SVG · 자동 페이지 번호</p>
+    <div class="flow">
+      <div class="card st"><span class="n">1</span><h3>내용을 준다</h3><p>문서 · 주제 · "발표자료 만들어줘"</p></div>
+      <span class="ar">→</span>
+      <div class="card st"><span class="n">2</span><h3>덱이 나온다</h3><p>template 토큰으로 <b style="color:var(--colors-primary)">초안 생성</b></p></div>
+      <span class="ar">→</span>
+      <div class="card st"><span class="n">3</span><h3>바로 발표</h3><p>브라우저 F11 · 방향키</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>SLIDE-DECK — SAMPLE</span><span></span></div>
+</section>
+
+<!-- ════ 2 · 3층 구조 ════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="top"><span class="badge">Structure</span><h2>모든 본문 슬라이드는 3층</h2><span class="pg"></span></div>
+    <div class="stmt">주장 <span class="green">1개</span> → 비주얼이 증명 → 칩 3개로 기억</div>
+    <div class="card hero">
+      <svg class="fig" viewBox="0 0 480 180">
+        <rect x="20" y="16" width="440" height="36" rx="5" fill="#E7F6F0"/>
+        <text x="36" y="39" font-family="JetBrains Mono,Consolas,monospace" font-size="11.5" fill="#0E9F6E" font-weight="600">statement — 큰 한 줄 메시지 (이 슬라이드의 유일한 주장)</text>
+        <rect x="20" y="62" width="440" height="66" rx="5" fill="#FFFFFF" stroke="#C7CDD6"/>
+        <text x="36" y="99" font-family="JetBrains Mono,Consolas,monospace" font-size="11.5" fill="#3F4754">히어로 비주얼 — SVG 다이어그램 또는 표</text>
+        <g>
+          <rect x="20" y="138" width="140" height="30" rx="5" fill="#FFFFFF" stroke="#E4E8EC"/>
+          <rect x="170" y="138" width="140" height="30" rx="5" fill="#FFFFFF" stroke="#E4E8EC"/>
+          <rect x="320" y="138" width="140" height="30" rx="5" fill="#FFFFFF" stroke="#E4E8EC"/>
+          <text x="90" y="157" font-family="JetBrains Mono" font-size="10" fill="#8A93A2" text-anchor="middle">칩 1</text>
+          <text x="240" y="157" font-family="JetBrains Mono" font-size="10" fill="#8A93A2" text-anchor="middle">칩 2</text>
+          <text x="390" y="157" font-family="JetBrains Mono" font-size="10" fill="#8A93A2" text-anchor="middle">칩 3</text>
+        </g>
+      </svg>
+    </div>
+    <div class="chips">
+      <div class="chip hl"><div class="k green"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> 주장은 1개</div><div class="c">두 개면 슬라이드를 쪼갠다</div></div>
+      <div class="chip"><div class="k"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg> 그림이 증명</div><div class="c">문장 단락 대신 SVG · 표</div></div>
+      <div class="chip"><div class="k"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 칩 3개</div><div class="c">기억할 것만 남긴다</div></div>
+    </div>
+  </div>
+  <div class="footer"><span>STRUCTURE — 3 LAYERS</span><span></span></div>
+</section>
+
+<!-- ════ 3 · 아이콘 규칙 ════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="top"><span class="badge">Icons</span><h2>아이콘은 Lucide 하나만</h2><span class="pg"></span></div>
+    <div class="stmt">이모지 <span class="red"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span> &nbsp;·&nbsp; <span class="green">Lucide 인라인 SVG <svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+    <div class="icogrid">
+      <div class="cell g"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg><span>flask-conical</span></div>
+      <div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg><span>database</span></div>
+      <div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span>target</span></div>
+      <div class="cell g"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg><span>trending-up</span></div>
+      <div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg><span>users</span></div>
+      <div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg><span>calendar</span></div>
+      <div class="cell g"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg><span>zap</span></div>
+      <div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg><span>table</span></div>
+    </div>
+    <div class="chips">
+      <div class="chip hl"><div class="k green">stroke 1.75 · currentColor</div><div class="c">텍스트 색 규칙을 그대로 따른다</div></div>
+      <div class="chip"><div class="k">icons/ 폴더 동봉</div><div class="c">없는 건 unpkg lucide-static에서</div></div>
+      <div class="chip"><div class="k">키워드 보조용만</div><div class="c">장식 나열 금지 — 슬라이드당 소수</div></div>
+    </div>
+  </div>
+  <div class="footer"><span>ICONS — LUCIDE ONLY</span><span></span></div>
+</section>
+
+<!-- ════ 4 · 데이터 슬라이드 예시 ════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="top"><span class="badge">Example</span><h2>데이터 슬라이드 — 좌 변수 · 우 표</h2><span class="pg"></span></div>
+    <div class="stmt" style="font-size:1.15em">믹싱 시간이 <span class="green">코팅 균일도</span>를 바꾸는가?</div>
+    <div class="ex">
+      <div class="card vars">
+        <div class="vg"><span class="label" style="color:var(--colors-primary);font-weight:600">입력 X</span>
+          <p>믹싱시간 · 온도 · 배합비</p></div>
+        <div class="vg"><span class="label">중간</span>
+          <p>슬러리 점도 <span class="u">(cP)</span></p></div>
+        <div class="vg"><span class="label" style="color:var(--colors-ink);font-weight:600">출력 Y</span>
+          <p>코팅 균일도 · <span class="green">불량률</span></p></div>
+      </div>
+      <div class="card data">
+        <span class="label">이렇게 쌓인다</span>
+        <table>
+          <tr><th>sample_id</th><th>믹싱(min)</th><th>온도</th><th>점도</th><th>균일도</th><th>불량률</th></tr>
+          <tr><td>S-001</td><td>30</td><td>25</td><td>4200</td><td>92</td><td>3.1</td></tr>
+          <tr><td>S-002</td><td>60</td><td>25</td><td>3600</td><td>96</td><td>1.2</td></tr>
+          <tr><td>S-003</td><td>60</td><td>40</td><td>2900</td><td>95</td><td>1.8</td></tr>
+        </table>
+        <p class="note">숫자·ID는 <span class="mono">JetBrains Mono</span> — <span class="green">측정 조건도 열로 함께</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>EXAMPLE — DATA SLIDE</span><span></span></div>
+</section>
+
+<!-- ════ 5 · ACTION ════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="top"><span class="badge">Action Items</span><h2>이 스킬 쓰는 법 — 딱 3개</h2><span class="pg"></span></div>
+    <div class="acts">
+      <div class="card a"><span class="n">01</span><h3>내용을 던진다</h3><p>"이 문서를 <b>발표자료로</b> 만들어줘" — 초안은 스킬이.</p><div class="who">/slide-deck · 자연어</div></div>
+      <div class="card a"><span class="n">02</span><h3>스크린샷으로 검수</h3><p>잘림·뭉개짐 보이면 스크린샷 첨부 → <b>오버플로 대응</b> 자동.</p><div class="who">?only=N 캡처 지원</div></div>
+      <div class="card a"><span class="n">03</span><h3>F11로 발표</h3><p>방향키 · Space · Home/End 내비게이션 내장.</p><div class="who">단일 HTML · 의존성 없음</div></div>
+    </div>
+  </div>
+  <div class="footer"><span>SLIDE-DECK — HOW TO USE</span><span></span></div>
+</section>
+
+</div>
+<script>
+addEventListener('DOMContentLoaded', () => {
+  const slides = [...document.querySelectorAll('.slide')];
+  const total = String(slides.length).padStart(2, '0');
+  slides.forEach((s, i) => {
+    const p = String(i + 1).padStart(2, '0') + ' / ' + total;
+    s.querySelectorAll('.pg').forEach(el => el.textContent = p);
+    const f = s.querySelector('.footer span:last-child');
+    if (f) f.textContent = p;
+  });
+
+  const fit = () => slides.forEach(s => { s.style.fontSize = (s.clientWidth * 0.0163) + 'px'; });
+  fit();
+  addEventListener('resize', fit);
+
+  /* 스크린샷 헬퍼: ?only=N 이면 N번째 슬라이드만 남긴다 */
+  const only = parseInt(new URLSearchParams(location.search).get('only'), 10);
+  if (only >= 1 && only <= slides.length) {
+    slides.forEach((s, i) => { if (i !== only - 1) s.remove(); });
+    document.body.style.padding = '0';
+    fit();
+  }
+
+  let cur = 0;
+  const go = n => {
+    cur = Math.max(0, Math.min(slides.length - 1, n));
+    slides[cur].scrollIntoView({behavior: 'smooth', block: 'center'});
+  };
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(cur + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); go(cur - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+  });
+  addEventListener('scroll', () => {
+    const mid = innerHeight / 2;
+    let best = 0, bd = Infinity;
+    slides.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      const d = Math.abs(r.top + r.height / 2 - mid);
+      if (d < bd) { bd = d; best = i; }
+    });
+    cur = best;
+  }, {passive: true});
+});
+</script>
+</body>
+</html>

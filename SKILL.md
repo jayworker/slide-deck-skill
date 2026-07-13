@@ -9,7 +9,7 @@ description: Traction Dashboard 스타일의 HTML 발표 슬라이드 덱을 만
 
 ## 워크플로
 
-1. **디자인 소스 확인**: 작업 폴더에 `design.md`가 있으면 그 토큰을 우선 사용. 없으면 이 스킬의 `template.html`에 내장된 Traction 토큰 사용. 사용자가 "NEWL 디자인으로"라고 하면 이 스킬 폴더의 `designs/newl/design.md`를 사용 (네이비+골드, 예시 렌더링은 `designs/newl/screenshots/` 참고).
+1. **디자인 소스 확인**: 작업 폴더에 `design.md`가 있으면 그 토큰을 우선 사용. 없으면 이 스킬의 `template.html`에 내장된 Traction 토큰 사용.
 2. **슬라이드 목록 설계**: 덱 구조는 `표지(큰 그림) → 개념/기초 → 본문/예시 → 액션 아이템`. 슬라이드당 주장 1개 — 주장이 두 개면 슬라이드를 쪼갠다. 러프한 제안 단계면 5~9장으로 제한.
 3. **`template.html`을 베이스로 작성**: 이 스킬 폴더의 `template.html`을 Read해서 CSS 토큰·슬라이드 클래스·자동 번호 스크립트를 그대로 가져오고, 슬라이드 섹션만 교체한다. 산출 파일명은 `<주제>_deck.html`, 작업 폴더에 저장.
 4. **완성 후**: `Start-Process "<파일경로>"`로 브라우저에서 열어준다. 사용자가 스크린샷으로 잘림/뭉개짐을 보고하면 → 아래 "오버플로 대응" 절차.
@@ -45,7 +45,7 @@ description: Traction Dashboard 스타일의 HTML 발표 슬라이드 덱을 만
 ## 비주얼 규칙
 
 - 모든 그림은 **인라인 SVG로 직접 그린다** (산점도, 히트맵, 곡선, 분기 다이어그램). 외부 이미지·아이콘 폰트 금지. 원형 차트 금지.
-- **아이콘은 Lucide 단일 소스** (lucide.dev, ISC). `https://unpkg.com/lucide-static/icons/<이름>.svg`를 WebFetch해서 **인라인 SVG로 삽입** — 경로 데이터를 손으로 그리지 말 것. stroke 1.75 · `currentColor` · fill none 유지, 크기는 텍스트 옆 `1.2em` 안팎. 색은 텍스트와 같은 규칙(핵심만 강조색, 금지는 레드). 아이콘은 키워드를 보조할 때만 — 장식용 나열 금지.
+- **아이콘은 Lucide 단일 소스** (lucide.dev, ISC). 이 스킬 폴더의 `icons/*.svg`에 자주 쓰는 것들이 동봉되어 있다 — Read해서 **인라인 SVG로 삽입** (경로 데이터를 손으로 그리지 말 것). 없는 아이콘은 `https://unpkg.com/lucide-static/icons/<이름>.svg`에서 가져온다. stroke 1.75 · `currentColor` · fill none 유지, `class="ico"`(1.15em)로 크기 통일. 색은 텍스트와 같은 규칙(핵심만 그린, 금지는 레드). 아이콘은 키워드를 보조할 때만 — 장식용 나열 금지.
 - **금지/허용 대비 = blocked-path 패턴**: 빨간 점선 화살표가 굵은 ✗에 막혀 끊기고(도달 실패), 초록 실선 화살표는 화살촉과 함께 목적지 도달. template.html에 예시 있음.
 - 데이터 표가 히어로가 될 수 있다 — X 구간 헤더는 그린 2px 밑줄, Y 구간은 잉크 2px 밑줄로 밴드 구분.
 - 수식 필요 시 KaTeX CDN + auto-render(`$$...$$`). template.html 주석 참조.
