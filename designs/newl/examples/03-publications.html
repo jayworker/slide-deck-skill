@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEWL Design System — Publications example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="newl-design-system.css" />
+  <style>
+    /* example-page layout helpers (not part of the design system) */
+    body { margin: 0; }
+    .pub-toolbar {
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+      margin-bottom: var(--space-10);
+    }
+    .pub-toolbar .search-input { flex: 1; }
+    .pub-list { display: flex; flex-direction: column; gap: var(--space-4); }
+    .pub {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-6);
+      padding: var(--space-6);
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+    .pub__title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin: 0 0 var(--space-2);
+    }
+    .pub__authors {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      margin: 0 0 var(--space-3);
+    }
+    .pub__journal {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-primary);
+    }
+    .pub__link { color: var(--color-text-secondary); align-self: flex-start; }
+    .year-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin: var(--space-10) 0 var(--space-6);
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+    .year-divider::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: var(--color-border);
+      border-radius: var(--radius-full);
+    }
+  </style>
+</head>
+<body class="newl">
+  <section class="section section--alt">
+    <div class="container container--narrow">
+      <div class="section__header">
+        <h2 class="section__title">Publications</h2>
+        <p class="section__subtitle">Peer-reviewed journal articles from the lab.</p>
+      </div>
+
+      <div class="pub-toolbar">
+        <div class="search-input">
+          <span class="search-input__icon"><i data-lucide="search" class="icon icon--sm"></i></span>
+          <input class="search-input__field" placeholder="Search title, author, journal…" />
+        </div>
+        <span class="tag tag--primary">All</span>
+        <span class="tag tag--outline">Batteries</span>
+        <span class="tag tag--outline">Solar</span>
+      </div>
+
+      <div class="year-divider">2026</div>
+      <div class="pub-list">
+        <article class="pub">
+          <div>
+            <h3 class="pub__title">Interfacial passivation of sulfide solid electrolytes for 4.5 V all-solid-state batteries</h3>
+            <p class="pub__authors">J. Kim, S. Park, <strong>H. Lee</strong>*</p>
+            <div class="pub__journal">
+              <i data-lucide="book-open" class="icon icon--sm"></i>
+              Nature Energy
+              <span class="badge-if">IF 49.7</span>
+              <span class="badge-jcr badge-jcr--top5">JCR TOP 5%</span>
+            </div>
+          </div>
+          <a class="pub__link" href="#"><i data-lucide="external-link" class="icon icon--sm"></i></a>
+        </article>
+        <article class="pub">
+          <div>
+            <h3 class="pub__title">Wide-bandgap perovskites with suppressed halide segregation for tandem photovoltaics</h3>
+            <p class="pub__authors">M. Choi, D. Kang, Y. Cho, <strong>H. Lee</strong>*</p>
+            <div class="pub__journal">
+              <i data-lucide="book-open" class="icon icon--sm"></i>
+              Joule
+              <span class="badge-if">IF 38.6</span>
+              <span class="badge-jcr badge-jcr--top10">JCR TOP 10%</span>
+            </div>
+          </div>
+          <a class="pub__link" href="#"><i data-lucide="external-link" class="icon icon--sm"></i></a>
+        </article>
+      </div>
+
+      <div class="year-divider">2025</div>
+      <div class="pub-list">
+        <article class="pub">
+          <div>
+            <h3 class="pub__title">Earth-abundant spinel oxides as durable OER catalysts in AEM water electrolysis</h3>
+            <p class="pub__authors">S. Yoon, <strong>H. Lee</strong>*</p>
+            <div class="pub__journal">
+              <i data-lucide="book-open" class="icon icon--sm"></i>
+              ACS Catalysis
+              <span class="badge-if">IF 12.9</span>
+              <span class="badge-jcr badge-jcr--top20">JCR TOP 20%</span>
+            </div>
+          </div>
+          <a class="pub__link" href="#"><i data-lucide="external-link" class="icon icon--sm"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

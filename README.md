@@ -38,12 +38,34 @@ Claude Code에서:
 
 작업 폴더에 [DESIGN.md 스펙](https://github.com/google-labs-code/design.md) 형식의 `design.md`가 있으면 그 토큰을 우선 사용하고, 없으면 내장 Traction 토큰을 쓴다.
 
+## 아이콘 — Lucide
+
+덱에서 아이콘이 필요하면 **[Lucide](https://lucide.dev)** (ISC 라이선스)만 쓴다.
+`unpkg.com/lucide-static/icons/<이름>.svg`를 가져와 **인라인 SVG**로 삽입 —
+산출물은 단일 HTML 파일로 유지되고, stroke `1.75` · `currentColor`라 텍스트 색
+규칙(강조색/레드)을 그대로 따른다. PPT에 직접 쓸 때도 lucide.dev에서 SVG를 받아
+PowerPoint에 삽입하면 색 편집이 된다.
+
+## 제공 디자인 — NEWL (네이비 + 골드)
+
+`designs/newl/design.md` — NEWL 연구실 디자인 시스템 토큰. "NEWL 디자인으로
+만들어줘"라고 하거나 이 파일을 작업 폴더에 `design.md`로 복사하면 적용된다.
+Pretendard, 18px 기본의 확대 타입 스케일, Lucide 아이콘 규칙 포함.
+
+디자인 예시 (`designs/newl/examples/` — 브라우저에서 바로 열림):
+
+| | |
+|---|---|
+| ![Home](designs/newl/screenshots/01-home.png) | ![Research](designs/newl/screenshots/02-research.png) |
+| ![Publications](designs/newl/screenshots/03-publications.png) | ![Styleguide](designs/newl/screenshots/04-styleguide.png) |
+
 ## 구성
 
 | 파일 | 역할 |
 |------|------|
 | `SKILL.md` | 스킬 정의 — 워크플로, 슬라이드 패턴, 글쓰기/강조/비주얼 규칙 |
 | `template.html` | 보일러플레이트 — 디자인 토큰 CSS, 슬라이드 유형별 견본 4장, 자동 번호 스크립트 |
+| `designs/newl/` | NEWL 디자인 토큰(`design.md`) + 예시 페이지 4장 + 스크린샷 |
 
 ## 크레딧
 
