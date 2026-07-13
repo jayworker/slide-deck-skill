@@ -19,8 +19,13 @@
   :root{
     --colors-primary:#0E9F6E; --colors-primary-soft:#5BD0A4;
     --colors-bg:#FAFBFC; --colors-card:#FFFFFF; --colors-border:#E4E8EC;
-    --colors-ink:#111827; --colors-body:#3F4754; --colors-label:#8A93A2;
+    --colors-ink:#111827; --colors-body:#3F4754; --colors-label:#6E7683; /* 4.4:1 — 프로젝터에서도 살아남는 라벨 */
     --colors-neutral-line:#C7CDD6; --badge-bg:#E7F6F0;
+    /* ── 데이터 색 (SKILL.md "색 사용 규칙") — 강조색과 의미를 섞지 않는다 ── */
+    --cat-1:#0E9F6E; --cat-2:#3D7DC0; --cat-3:#B8830C; --cat-4:#7A5FC0; /* 시리즈: 고정 순서, 건너뛰기 금지 */
+    --seq-1:#4CBB8C; --seq-2:#0E9F6E; --seq-3:#0A7E55; --seq-4:#065C3D; /* 크기: 그린 밝기 램프 (연→진) */
+    --div-neg:#3D7DC0; --div-neg-soft:#9DC0E4; --div-mid:#E8EAED;
+    --div-pos-soft:#8FD4B4; --div-pos:#0E9F6E;                          /* 부호: 음=블루 · 중립=회색 · 양=그린 */
     --font-head:"Archivo","Pretendard Variable",Pretendard,"Malgun Gothic",sans-serif;
     --font-mono:"JetBrains Mono","Consolas",monospace;
     --rounded-sm:6px; --rounded-md:10px;
@@ -45,7 +50,7 @@
   /* Lucide 아이콘 (icons/*.svg 인라인 삽입용) — currentColor라 .green/.red 그대로 적용 */
   .ico{width:1.15em;height:1.15em;vertical-align:-.18em}
   .top{display:flex;align-items:center;gap:1em;margin-bottom:.8em}
-  .top h2{font-size:1.5em;font-weight:700;letter-spacing:-.015em;color:var(--colors-ink);line-height:1.25}
+  .top h2{font-size:1.35em;font-weight:700;letter-spacing:-.015em;color:var(--colors-ink);line-height:1.25} /* statement(1.6em)가 위계에서 이기도록 반 단계 아래 */
   .top .pg{margin-left:auto;font-family:var(--font-mono);font-size:.66em;color:var(--colors-label)}
   .footer{position:absolute;left:4.5%;right:4.5%;bottom:3.4%;display:flex;justify-content:space-between;border-top:1px solid var(--colors-border);padding-top:.6em;font-family:var(--font-mono);font-size:.58em;color:var(--colors-label);letter-spacing:.08em}
 

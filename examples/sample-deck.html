@@ -13,8 +13,12 @@
   :root{
     --colors-primary:#0E9F6E; --colors-primary-soft:#5BD0A4;
     --colors-bg:#FAFBFC; --colors-card:#FFFFFF; --colors-border:#E4E8EC;
-    --colors-ink:#111827; --colors-body:#3F4754; --colors-label:#8A93A2;
+    --colors-ink:#111827; --colors-body:#3F4754; --colors-label:#6E7683;
     --colors-neutral-line:#C7CDD6; --badge-bg:#E7F6F0;
+    --cat-1:#0E9F6E; --cat-2:#3D7DC0; --cat-3:#B8830C; --cat-4:#7A5FC0;
+    --seq-1:#4CBB8C; --seq-2:#0E9F6E; --seq-3:#0A7E55; --seq-4:#065C3D;
+    --div-neg:#3D7DC0; --div-neg-soft:#9DC0E4; --div-mid:#E8EAED;
+    --div-pos-soft:#8FD4B4; --div-pos:#0E9F6E;
     --font-head:"Archivo","Pretendard Variable",Pretendard,"Malgun Gothic",sans-serif;
     --font-mono:"JetBrains Mono","Consolas",monospace;
     --rounded-sm:6px; --rounded-md:10px;
@@ -38,7 +42,7 @@
   .mono{font-family:var(--font-mono)}
   .ico{width:1.15em;height:1.15em;vertical-align:-.18em}
   .top{display:flex;align-items:center;gap:1em;margin-bottom:.8em}
-  .top h2{font-size:1.5em;font-weight:700;letter-spacing:-.015em;color:var(--colors-ink);line-height:1.25}
+  .top h2{font-size:1.35em;font-weight:700;letter-spacing:-.015em;color:var(--colors-ink);line-height:1.25}
   .top .pg{margin-left:auto;font-family:var(--font-mono);font-size:.66em;color:var(--colors-label)}
   .footer{position:absolute;left:4.5%;right:4.5%;bottom:3.4%;display:flex;justify-content:space-between;border-top:1px solid var(--colors-border);padding-top:.6em;font-family:var(--font-mono);font-size:.58em;color:var(--colors-label);letter-spacing:.08em}
   .stmt{font-size:1.6em;font-weight:800;letter-spacing:-.015em;color:var(--colors-ink);line-height:1.3;margin:.2em 0 .6em}
@@ -186,7 +190,67 @@
   <div class="footer"><span>EXAMPLE — DATA SLIDE</span><span></span></div>
 </section>
 
-<!-- ════ 5 · ACTION ════ -->
+<!-- ════ 5 · 데이터 색 규칙 ════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="top"><span class="badge">Color Rules</span><h2>데이터 색 — 강조색과 분리</h2><span class="pg"></span></div>
+    <div class="stmt">색 하나 = <span class="green">의미 하나</span> — 강조와 데이터를 섞지 않는다</div>
+    <div class="card hero">
+      <svg class="fig" viewBox="0 0 480 190">
+        <!-- A · 부호 = 다이버징 -->
+        <text x="12" y="22" font-family="JetBrains Mono,Consolas,monospace" font-size="10.5" fill="#3F4754" font-weight="600">부호 = 다이버징</text>
+        <g font-family="JetBrains Mono,Consolas,monospace" font-size="10.5" text-anchor="middle">
+          <rect x="12" y="34" width="60" height="32" rx="3" fill="#0E9F6E"/><text x="42" y="54" fill="#fff">+.71</text>
+          <rect x="78" y="34" width="60" height="32" rx="3" fill="#3D7DC0"/><text x="108" y="54" fill="#fff">−.58</text>
+          <rect x="12" y="72" width="60" height="32" rx="3" fill="#8FD4B4"/><text x="42" y="92" fill="#111827">+.20</text>
+          <rect x="78" y="72" width="60" height="32" rx="3" fill="#E8EAED"/><text x="108" y="92" fill="#3F4754">−.12</text>
+        </g>
+        <text x="12" y="126" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683">음수 = 블루 · 0 근처 = 회색</text>
+        <text x="12" y="142" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#D64545">음수를 회색조로 ✗ (부호가 숨는다)</text>
+        <text x="12" y="158" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683">셀엔 항상 숫자 병기</text>
+
+        <!-- B · 크기 = 시퀀셜 -->
+        <text x="180" y="22" font-family="JetBrains Mono,Consolas,monospace" font-size="10.5" fill="#3F4754" font-weight="600">크기 = 시퀀셜</text>
+        <g>
+          <rect x="180" y="34" width="30" height="30" rx="3" fill="#4CBB8C"/>
+          <rect x="214" y="34" width="30" height="30" rx="3" fill="#0E9F6E"/>
+          <rect x="248" y="34" width="30" height="30" rx="3" fill="#0A7E55"/>
+          <rect x="282" y="34" width="30" height="30" rx="3" fill="#065C3D"/>
+        </g>
+        <text x="180" y="80" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683">낮음</text>
+        <text x="312" y="80" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683" text-anchor="end">높음</text>
+        <line x1="202" y1="77" x2="286" y2="77" stroke="#C7CDD6" stroke-width="1"/>
+        <polygon points="286,73.5 293,77 286,80.5" fill="#C7CDD6"/>
+        <text x="180" y="126" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683">한 색의 밝기만 — 무지개 ✗</text>
+        <text x="180" y="142" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683">용량·횟수·강도처럼</text>
+        <text x="180" y="158" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683">부호 없는 값에</text>
+
+        <!-- C · 시리즈 = 고정 순서 -->
+        <text x="350" y="22" font-family="JetBrains Mono,Consolas,monospace" font-size="10.5" fill="#3F4754" font-weight="600">시리즈 = 고정 순서</text>
+        <g font-family="JetBrains Mono,Consolas,monospace" font-size="9.5">
+          <line x1="350" y1="42" x2="392" y2="42" stroke="#0E9F6E" stroke-width="2.5"/><circle cx="371" cy="42" r="4" fill="#0E9F6E"/><text x="400" y="46" fill="#111827">1 그린</text>
+          <line x1="350" y1="64" x2="392" y2="64" stroke="#3D7DC0" stroke-width="2.5"/><circle cx="371" cy="64" r="4" fill="#3D7DC0"/><text x="400" y="68" fill="#111827">2 블루</text>
+          <line x1="350" y1="86" x2="392" y2="86" stroke="#B8830C" stroke-width="2.5"/><circle cx="371" cy="86" r="4" fill="#B8830C"/><text x="400" y="90" fill="#111827">3 앰버</text>
+          <line x1="350" y1="108" x2="392" y2="108" stroke="#7A5FC0" stroke-width="2.5"/><circle cx="371" cy="108" r="4" fill="#7A5FC0"/><text x="400" y="112" fill="#111827">4 퍼플</text>
+        </g>
+        <text x="350" y="142" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683">순서 고정 · 건너뛰기 ✗</text>
+        <text x="350" y="158" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#6E7683">5개째부터 회색 "기타"</text>
+
+        <!-- 구분선 -->
+        <line x1="160" y1="16" x2="160" y2="164" stroke="#E4E8EC"/>
+        <line x1="332" y1="16" x2="332" y2="164" stroke="#E4E8EC"/>
+      </svg>
+    </div>
+    <div class="chips">
+      <div class="chip hl"><div class="k green">색 하나 = 의미 하나</div><div class="c">강조 그린 ≠ 데이터 그린 — 같은 슬라이드에서 혼용 금지</div></div>
+      <div class="chip"><div class="k">색 + 형태 이중 인코딩</div><div class="c">점선/실선 · ✓/✗ · 숫자 병기 — 색만으로 싣지 않는다</div></div>
+      <div class="chip"><div class="k">레드는 끝까지 금지 전용</div><div class="c">음수·시리즈 4에도 쓰지 않는다</div></div>
+    </div>
+  </div>
+  <div class="footer"><span>COLOR RULES — DATA vs EMPHASIS</span><span></span></div>
+</section>
+
+<!-- ════ 6 · ACTION ════ -->
 <section class="slide">
   <div class="inner">
     <div class="top"><span class="badge">Action Items</span><h2>이 스킬 쓰는 법 — 딱 3개</h2><span class="pg"></span></div>

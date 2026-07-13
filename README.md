@@ -8,7 +8,7 @@ A Claude Code skill that generates presentation decks as a single self-contained
 
 - **Traction Dashboard 스타일**: 연회색 배경(`#FAFBFC`) 위 흰색 카드 그리드, 데이터 그린(`#0E9F6E`) 포인트, Archivo + JetBrains Mono (+ Pretendard 한글 폴백)
 - **슬라이드당 메시지 1개**: `배지+제목 → 큰 한 줄 메시지(statement) → 히어로 비주얼(SVG/표) → 키워드 칩 3개`의 3층 구조
-- **강조 3색 체계**: 그린 = 핵심/긍정/허용 · 잉크 볼드 = 보조 · 레드(`#D64545`) = 금지/✗ 전용
+- **색 하나 = 의미 하나**: 강조(그린 = 핵심/긍정 · 잉크 볼드 = 보조 · 레드 = 금지 전용)와 데이터 색을 분리 — 크기는 시퀀셜 램프, 부호(상관·증감)는 블루↔그린 다이버징, 시리즈는 고정 순서 4색(색약 검증 통과). 색만으로 의미를 싣지 않는다(점선/실선 · 숫자 병기)
 - **blocked-path 패턴**: "이건 안 되고(빨간 점선 → ✗) 이렇게 해야 한다(초록 실선 → 도달)"를 그림으로
 - **자동 페이지 번호**: 슬라이드를 추가·삭제·이동해도 번호가 어긋나지 않음 (JS 계산)
 - **의존성 없음**: 산출물은 HTML 파일 하나. 브라우저에서 열고 F11로 발표 (폰트/KaTeX는 CDN)
@@ -46,6 +46,7 @@ Claude Code에서:
 |---|---|
 | ![표지](docs/screenshots/slide-1.png) | ![3층 구조](docs/screenshots/slide-2.png) |
 | ![아이콘 규칙](docs/screenshots/slide-3.png) | ![데이터 슬라이드](docs/screenshots/slide-4.png) |
+| ![데이터 색 규칙](docs/screenshots/slide-5.png) | ![액션 아이템](docs/screenshots/slide-6.png) |
 
 스크린샷은 `?only=N` 헬퍼(N번째 슬라이드만 렌더)로 headless Chrome에서 캡처:
 
